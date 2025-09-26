@@ -4,6 +4,7 @@ import lab2
 
 class testsmth(unittest.TestCase):
     def test_work(self):
+        '''тесты при корректных интервалах'''
         self.assertEqual(lab2.guess(5,[int(k) for k in range(19)]),(5,5))
         self.assertEqual(lab2.guess(40,[int(k)for k in range(30,43)]),(40,5))
         self.assertEqual(lab2.guess(-1,[int(k)for k in range(-3,10)]),(-1,5))
@@ -11,6 +12,7 @@ class testsmth(unittest.TestCase):
         self.assertEqual(lab2.guess(15,[int(k) for k in range(1,16)]),(15,5)) # проверяем, находит ли число, если оно на правой границе
         
     def test_forERRORS(self):
+        '''тесты при некорретных интервалах'''
         with self.assertRaises(ValueError):  # проверяем рейзит ли ошибку при некорректном списке
             lab2.guess(10,[int(k)for k in range(9)])
             lab2.guess(-4,[int(k)for k in range(9)])
@@ -24,3 +26,5 @@ class testsmth(unittest.TestCase):
             
 if __name__=='__main__':
     unittest.main()
+
+help(test_work)

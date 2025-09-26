@@ -1,6 +1,21 @@
 
-def guess(n: int,lst: list) -> (int, int):
-    '''binary search function'''
+def guess(n: int, lst: list) -> (int, int):
+    '''Функция бинарного поиска искомого числа в списке.
+
+    Ищет число 'n' в отсортированном списке 'lst' с помощью
+    алгоритма бинарного поиска.
+
+    Аргументы:
+        n (int) -- искомое число.
+        lst (list) -- отсортированный список, в котором производится поиск.
+
+    Возвращает: 
+        кортеж, содержащий найденное число (lst[right])
+        и количество итераций (k), потребовавшихся для поиска.
+
+    Raises:
+        ValueError: если искомое число не найдено в списке.
+    '''
     if n not in lst:
         raise ValueError('искомое число не в списке')
         
@@ -15,11 +30,25 @@ def guess(n: int,lst: list) -> (int, int):
         else:
             left=mid
     return lst[right],k
-'''вовзращает искомое число и кол-во входов'''
+
 
 
 
 def main() -> 'function':
+    '''Создает список 'lst' в котором будет производиться поиск числа 'n' на основе данных, 
+    которые вводит пользователь:
+
+    num -- int (искомое число)
+    n -- int (начало списка)
+    f -- int (конец списка)
+
+    Формирует список значений в интервале от n до f (если возможно) 
+
+    ValueError: если не удалось сформировать список (пользователь
+    отказался поменять местами n и f).
+
+    Вызывает функцию guess (бинарный поиск)
+    '''
     print('what do we search?')
     num=int(input())
     
@@ -29,7 +58,6 @@ def main() -> 'function':
     print('input end of the list')
     f=int(input())
     
-    '''filling in list'''
     if n<f:
         lst=[int(x) for x in range(n,f+1)] 
     else:
@@ -41,6 +69,8 @@ def main() -> 'function':
             raise ValueError('impossible list')
     return(guess(num,lst))
 
+# print(guess.__doc__)
+# print(main.__doc__)
 
 # print (main())
-'''проверить работу вручную'''
+
