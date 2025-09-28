@@ -1,6 +1,6 @@
 
 def guess(n: int, lst: list) -> (int, int):
-    '''Функция бинарного поиска искомого числа в списке.
+    '''Выполняет бинарный поиск искомого числа в списке.\]
 
     Ищет число 'n' в отсортированном списке 'lst' с помощью
     алгоритма бинарного поиска.
@@ -13,8 +13,8 @@ def guess(n: int, lst: list) -> (int, int):
         кортеж, содержащий найденное число (lst[right])
         и количество итераций (k), потребовавшихся для поиска.
 
-    Raises:
-        ValueError: если искомое число не найдено в списке.
+    Raises ValueError:
+        если искомое число не найдено в списке.
     '''
     if n not in lst:
         raise ValueError('искомое число не в списке')
@@ -27,6 +27,7 @@ def guess(n: int, lst: list) -> (int, int):
         k+=1
         if lst[mid]>=n:
             right=mid
+            print(lst[right])
         else:
             left=mid
     return lst[right],k
@@ -72,5 +73,5 @@ def main() -> 'function':
 # print(guess.__doc__)
 # print(main.__doc__)
 
-# print (main())
+print (main())
 
