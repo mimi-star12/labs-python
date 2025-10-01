@@ -27,7 +27,6 @@ def guess(n: int, lst: list) -> (int, int):
         k+=1
         if lst[mid]>=n:
             right=mid
-            print(lst[right])
         else:
             left=mid
     return lst[right],k
