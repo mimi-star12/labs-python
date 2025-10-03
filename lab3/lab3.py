@@ -88,5 +88,5 @@ def print_tree_by_levels(tree_dict: dict):
 
 print_tree_by_levels(get_bin_tree(15,6))
 
-#print(get_bin_tree(15,6))
+print(get_bin_tree(15,6))
 #print(help(get_bin_tree))

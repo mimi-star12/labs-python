@@ -1,0 +1,11 @@
+# roots = [5,6,10,7,12,11,20]
+# res=list(map(lambda x:{str(x): []}, roots))
+# print(res)
+
+# Root = 12; height = 4, left_leaf = root^3, right_leaf = (root*2)-1
+
+from collections import deque
+
+def get_bin_tree(root: int, height: int):
+
+    for i in range()
