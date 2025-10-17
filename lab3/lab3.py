@@ -17,10 +17,10 @@ def get_bin_tree(root: int, height: int) -> dict:
                        get_bin_tree(right_leaf(root), height-1)]}
     
     elif height == 1: 
-        return {root: []}
+        return {root: [left_leaf(root), right_leaf(root)]}
     
     else: 
-        return {}
+        return {root}
 
 def left_leaf(root: int) -> int:
     """Calculates the value for the left leaf
@@ -86,7 +86,7 @@ def print_tree_by_levels(tree_dict: dict):
     if line_output:
         print(f"Level {current_level}: {' | '.join(line_output)}")
 
-print_tree_by_levels(get_bin_tree(15,6))
+# print_tree_by_levels(get_bin_tree(15,6))
 
 print(get_bin_tree(15,6))
 #print(help(get_bin_tree))
