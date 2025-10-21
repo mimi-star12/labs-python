@@ -19,8 +19,10 @@ def get_bin_tree(root: int, height: int) -> dict:
     elif height == 1: 
         return {root: [left_leaf(root), right_leaf(root)]}
     
-    else: 
+    elif height == 0: 
         return {root}
+    else:
+        raise ValueError("Height must be non-negative integer")
 
 def left_leaf(root: int) -> int:
     """Calculates the value for the left leaf
@@ -49,7 +51,8 @@ def right_leaf(root: int) -> int:
 
 def print_tree_by_levels(tree_dict: dict):
     """
-    Prints nodes, dividing them by levels
+    More readable way to visualize the tree.
+    Prints nodes, dividing them by levels.
 
     Args:
         tree_dict (dict) - tree, that we get from function get_bin_tree

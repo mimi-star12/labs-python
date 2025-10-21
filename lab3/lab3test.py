@@ -30,9 +30,17 @@ class test_tree(unittest.TestCase):
 
     def test_getbintree(self):
         """tests get_bin_tree function"""
-        self.assertEqual(lab3.get_bin_tree(10, -5), {})
-        self.assertEqual(lab3.get_bin_tree(10, 0), {})
-        self.assertEqual(lab3.get_bin_tree(1, 2), {1: [{4: []}, {0: []}]})
-            
+        self.assertEqual(lab3.get_bin_tree(10, 0), {10})
+        self.assertEqual(lab3.get_bin_tree(1, 2),{1: [{4: [10, 6]}, {0: [2, -2]}]})
+        self.assertEqual(lab3.get_bin_tree(5, 1), {5: [12, 8]})
+        
+    
+    def test_for_value_error(self):
+        """tests get_bin_tree for ValueError"""
+        with self.assertRaises(ValueError):
+            lab3.get_bin_tree(10, -1)
+            lab3.get_bin_tree(5, -10)
+            lab3.get_bin_tree(0, -5)
+
 if __name__ == '__main__':
-    unittest.main()
+    unittest.main()                                 
