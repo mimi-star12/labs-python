@@ -42,5 +42,13 @@ class test_tree(unittest.TestCase):
             lab3.get_bin_tree(5, -10)
             lab3.get_bin_tree(0, -5)
 
+    def test_for_type_error(self):
+        """tests every function for errors"""
+        with self.assertRaises(TypeError):
+            lab3.get_bin_tree('', 2)
+            lab3.get_bin_tree(23, '')
+            lab3.get_bin_tree(1.5, 2)
+            lab3.get_bin_tree(23, 2.5)
+
 if __name__ == '__main__':
     unittest.main()                                 
