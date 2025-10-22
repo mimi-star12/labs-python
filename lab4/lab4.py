@@ -19,7 +19,7 @@ def fact_iterative(n: int) -> int:
     return res
 
 
-def benchmark(func, data, number=1, repeat=5):
+def benchmark(func, data, number=10000, repeat=5):
     """Возвращает среднее время выполнения func на наборе data"""
     total = 0
     for n in data:
@@ -38,8 +38,8 @@ def main():
     res_iterative = []
 
     for n in test_data:
-        res_recursive.append(benchmark(fact_recursive, [n], number=10000, repeat=5))
-        res_iterative.append(benchmark(fact_iterative, [n], number=10000, repeat=5))
+        res_recursive.append(benchmark(fact_recursive, [n]))
+        res_iterative.append(benchmark(fact_iterative, [n]))
 
     # Визуализация
     plt.plot(test_data, res_recursive, label="Рекурсивный")
