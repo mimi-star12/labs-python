@@ -1,0 +1,87 @@
+# Root = 15; height = 6, left_leaf = 2*(root+1), right_leaf = 2*(root-1)
+
+def get_bin_tree_iter(root: int, 
+                      height: int,
+                      left = lambda x: 2*(x+1),
+                      right = lambda x: 2*(x-1)):
+    '''
+    Итеративно строит бинарное дерево заданной высоты.
+
+    Функция создаёт бинарное дерево без использования рекурсии,
+    используя стек (`stacks`) для имитации рекурсивных вызовов.
+    Каждый узел дерева представлен словарём следующего вида:
+    {root: [левое_поддерево, правое_поддерево]}.
+    Когда глубина достигает нуля, функция возвращает листовой узел `{root}`.
+
+    Parameters
+    -root : int
+        Значение корня дерева.
+    -height : int
+        Высота дерева (глубина рекурсивного построения).
+        При `height = 0` возвращается только один узел — корень.
+    -left : lambda x: 2 * (x + 1)
+        Функция для вычисления значения левого потомка.
+    -right : lambda x: 2 * (x - 1)
+        Функция для вычисления значения правого потомка.
+
+    Returns
+    -dict
+        Вложенный словарь, представляющий бинарное дерево.
+        Формат:
+        `{root: [левое_поддерево, правое_поддерево]}`
+        где поддеревья имеют аналогичную структуру вплоть до листьев.
+
+    Notes
+    - Используется стек для обхода дерева что позволяет избежать переполнения стека вызовов при больших `height`.
+    - `state` внутри стека (`0`, `1`, `2`) определяет текущий этап обработки узла:
+        * `0` — требуется построить левое поддерево;
+        * `1` — левое готово, строится правое;
+        * `2` — оба поддерева готовы, узел собирается.
+    '''
+    if height < 0:
+        raise ValueError
+    if height == 0:
+        return {root}
+    if height == 1:
+        return {root: [left(root), right(root)]}
+    
+    stacks = [{'root': root, 'h': height, 'state': 0}]
+    built = []
+    
+    while stacks:
+        stack = stacks[-1]
+        root, h, state = stack['root'], stack['h'], stack['state']
+
+        if h <= 0:
+            built.append({root})
+            stacks.pop()
+            continue
+
+        if h == 1:
+            built.append({root:[left(root), right(root)]})
+            stacks.pop()
+            continue
+
+        if state == 0: # need to go to the left
+            stack['state'] = 1
+            stacks.append({'root': left(root), 'h': h-1, 'state': 0})
+            continue
+
+        if state == 1: # need to go to the right, remember left
+            stack['left_built'] = built.pop()
+            stack['state'] = 2
+            stacks.append({'root': right(root), 'h': h-1, 'state': 0})
+            continue
+
+        if state == 2:
+            stack['right_built'] = built.pop()
+            stack['state'] = 0
+            built.append({root: [stack['left_built'], stack['right_built']] })
+            stacks.pop()
+
+    return built[0]
+
+print(get_bin_tree_iter(15, 6))
+
+
+

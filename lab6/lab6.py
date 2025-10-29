@@ -1,10 +1,11 @@
 import timeit
 import matplotlib.pyplot as plt
 
-from lab3 import lab3
-from lab5 import lab5
+import lab3
+import lab5
 
-def benchmark(func, root, number=10000, repeat=5):
+def benchmark(func, root, number=10000, repeat
+              =5):
     """Возвращает среднее время выполнения func на корне root"""
     times = timeit.repeat(lambda: func(root, 8), number=number, repeat=repeat)
     # берём минимальное время из серии
