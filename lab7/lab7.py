@@ -100,6 +100,26 @@ def get_currencies(currencies_list: list, url: str = url, ) -> dict:
 
     return result
 
+quad_log = logging.getLogger("quadratic")
+quad_log.setLevel(logging.INFO)
+def solve_quadratic(a, b, c):
+    if not((isinstance(a, int) or isinstance(a, float)) and (isinstance(b, int) or isinstance(b, float)) and (isinstance(c, int) or isinstance(c, float))):
+        quad_log.error("Введите числовые значения для коэффициентов a, b и c")
+        raise TypeError("Коэффициенты должны быть числами")
+    if a == b == 0:
+        quad_log.critical("Коэффициенты a и b не могут быть равны нулю одновременно")
+        raise ValueError("Некорректное уравнение")
+    D = b**2 - 4*a*c
+    if D<0:
+        quad_log.warning("Дискриминант меньше нуля, корней нет")
+        raise ValueError("Нет вещественных корней")
+    x1 = (-b + D**0.5) / (2*a)
+    x2 = (-b - D**0.5) / (2*a)
+    quad_log.info(f"x1 = {x1}")
+    quad_log.info(f"x2 = {x2}")
+    return x1, x2
+
+
 if __name__ == "__main__":
     currencies = ["USD", "EUR", "NGN", "CNY"]
     print(get_currencies(currencies))
