@@ -1,5 +1,6 @@
 import functools
 import requests
+import math
 import sys
 import logging
 import io
@@ -61,7 +62,7 @@ def logger(func=None, *, handle=sys.stdout):
 
 url = 'https://www.cbr-xml-daily.ru/daily_json.js'
 
-@logger(handle = file_logger)
+@logger(handle = file_logger) # параметризуемый декоратор логирования
 def get_currencies(currencies_list: list, url: str = url, ) -> dict:
     '''
     Функция получает текущие курсы валют с заданного API (ЦБ РФ) и возвращает dict с курсами указанных валют
@@ -102,27 +103,51 @@ def get_currencies(currencies_list: list, url: str = url, ) -> dict:
 
 quad_log = logging.getLogger("quadratic")
 quad_log.setLevel(logging.INFO)
+handler = logging.FileHandler("quadratic.log", encoding="utf-8")
+formatter = logging.Formatter("%(asctime)s | %(levelname)s | %(name)s | %(message)s")
+handler.setFormatter(formatter)
+quad_log.addHandler(handler)
+quad_log.propagate = False
+
+@logger(handle = quad_log) # параметризуемый декоратор логирования
 def solve_quadratic(a, b, c):
-    if not((isinstance(a, int) or isinstance(a, float)) and (isinstance(b, int) or isinstance(b, float)) and (isinstance(c, int) or isinstance(c, float))):
-        quad_log.error("Введите числовые значения для коэффициентов a, b и c")
-        raise TypeError("Коэффициенты должны быть числами")
-    if a == b == 0:
-        quad_log.critical("Коэффициенты a и b не могут быть равны нулю одновременно")
-        raise ValueError("Некорректное уравнение")
-    D = b**2 - 4*a*c
-    if D<0:
-        quad_log.warning("Дискриминант меньше нуля, корней нет")
-        raise ValueError("Нет вещественных корней")
-    x1 = (-b + D**0.5) / (2*a)
-    x2 = (-b - D**0.5) / (2*a)
-    quad_log.info(f"x1 = {x1}")
-    quad_log.info(f"x2 = {x2}")
-    return x1, x2
+    logging.info(f"Solving equation: {a}x^2 + {b}x + {c} = 0")
+
+    # Ошибка типов
+    for name, value in zip(("a", "b", "c"), (a, b, c)):
+        if not isinstance(value, (int, float)):
+            logging.critical(f"Parameter '{name}' must be a number, got: {value}")
+            raise TypeError(f"Coefficient '{name}' must be numeric")
+
+    # Ошибка: a == 0
+    if a == 0:
+        logging.error("Coefficient 'a' cannot be zero")
+        raise ValueError("a cannot be zero")
+    
+    
+
+    d = b*b - 4*a*c
+    logging.debug(f"Discriminant: {d}")
+
+    if d < 0:
+        logging.warning("Discriminant < 0: no real roots")
+        return None
+
+    if d == 0:
+        x = -b / (2*a)
+        logging.info("One real root")
+        return (x,)
+
+    root1 = (-b + math.sqrt(d)) / (2*a)
+    root2 = (-b - math.sqrt(d)) / (2*a)
+    logging.info("Two real roots computed")
+    return root1, root2
 
 
 if __name__ == "__main__":
     currencies = ["USD", "EUR", "NGN", "CNY"]
     print(get_currencies(currencies))
+    print(solve_quadratic(1, -3, 2))
 
 
                 

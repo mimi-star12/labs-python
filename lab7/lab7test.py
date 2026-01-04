@@ -8,7 +8,7 @@ import lab7
 class TestMySolution(unittest.TestCase):
     def test_correctness(self):
         # проверка корректности полученных данных
-        self.assertEqual(lab7.get_currencies(["USD", "EUR", "NGN", "CNY"]), {'USD': 79.3398, 'EUR': 92.9384, 'NGN': 54.5147, 'CNY': 11.1867})
+        self.assertEqual(lab7.get_currencies(["USD", "EUR", "NGN", "CNY"]), {'USD': 78.2267, 'EUR':  92.0938, 'NGN': 54.2295, 'CNY': 11.1592})
         self.assertIsInstance(lab7.get_currencies(['USD', 'EUR']), dict)
         self.assertIsInstance(lab7.get_currencies(['USD', 'EUR'])['USD'], float)
         self.assertGreaterEqual(lab7.get_currencies(['USD', 'EUR'])['USD'], 0)

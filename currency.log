@@ -1,0 +1,279 @@
+2026-01-04 16:30:29,192 | INFO | currency | starting func get_currencies with args (['USD', 'EUR', 'NGN', 'CNY'],) {}
+2026-01-04 16:30:29,800 | INFO | currency | successfully finished! result {'USD': 78.2267, 'EUR': 92.0938, 'NGN': 54.2295, 'CNY': 11.1592}
+2026-01-04 16:30:29,802 | INFO | currency | starting func get_currencies with args (['RUB', 'FAKECURRENCY'],) {}
+2026-01-04 16:30:30,308 | ERROR | currency | ERROR: KeyError "Currency 'RUB' is missing in API response"
+Traceback (most recent call last):
+  File "c:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\lab7\lab7.py", line 42, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\lab7\lab7.py", line 94, in get_currencies
+    raise KeyError(f"Currency {code!r} is missing in API response")
+KeyError: "Currency 'RUB' is missing in API response"
+2026-01-04 16:30:30,310 | INFO | currency | starting func get_currencies with args (['USD'],) {'url': 'https://thiswebsitedoesnotexist123456789.com'}
+2026-01-04 16:30:30,361 | ERROR | currency | ERROR: ConnectionError API is unavailable at https://thiswebsitedoesnotexist123456789.com: HTTPSConnectionPool(host='thiswebsitedoesnotexist123456789.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001E0EE5A1ED0>: Failed to resolve 'thiswebsitedoesnotexist123456789.com' ([Errno 11001] getaddrinfo failed)"))
+Traceback (most recent call last):
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\socket.py", line 962, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\urllib3\connection.py", line 753, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\urllib3\connection.py", line 205, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x000001E0EE5A1ED0>: Failed to resolve 'thiswebsitedoesnotexist123456789.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='thiswebsitedoesnotexist123456789.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001E0EE5A1ED0>: Failed to resolve 'thiswebsitedoesnotexist123456789.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\lab7\lab7.py", line 76, in get_currencies
+    response = requests.get(url)
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\requests\adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='thiswebsitedoesnotexist123456789.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001E0EE5A1ED0>: Failed to resolve 'thiswebsitedoesnotexist123456789.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\lab7\lab7.py", line 42, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\lab7\lab7.py", line 79, in get_currencies
+    raise ConnectionError(f"API is unavailable at {url}: {e}")
+ConnectionError: API is unavailable at https://thiswebsitedoesnotexist123456789.com: HTTPSConnectionPool(host='thiswebsitedoesnotexist123456789.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001E0EE5A1ED0>: Failed to resolve 'thiswebsitedoesnotexist123456789.com' ([Errno 11001] getaddrinfo failed)"))
+2026-01-04 16:31:47,352 | INFO | currency | starting func get_currencies with args (['USD', 'EUR', 'NGN', 'CNY'],) {}
+2026-01-04 16:31:47,852 | INFO | currency | successfully finished! result {'USD': 78.2267, 'EUR': 92.0938, 'NGN': 54.2295, 'CNY': 11.1592}
+2026-01-04 16:31:47,854 | INFO | currency | starting func get_currencies with args (['RUB', 'FAKECURRENCY'],) {}
+2026-01-04 16:31:48,345 | ERROR | currency | ERROR: KeyError "Currency 'RUB' is missing in API response"
+Traceback (most recent call last):
+  File "c:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\lab7\lab7.py", line 42, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\lab7\lab7.py", line 94, in get_currencies
+    raise KeyError(f"Currency {code!r} is missing in API response")
+KeyError: "Currency 'RUB' is missing in API response"
+2026-01-04 16:31:48,347 | INFO | currency | starting func get_currencies with args (['USD'],) {'url': 'https://thiswebsitedoesnotexist123456789.com'}
+2026-01-04 16:31:48,394 | ERROR | currency | ERROR: ConnectionError API is unavailable at https://thiswebsitedoesnotexist123456789.com: HTTPSConnectionPool(host='thiswebsitedoesnotexist123456789.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000020BFBCB2390>: Failed to resolve 'thiswebsitedoesnotexist123456789.com' ([Errno 11001] getaddrinfo failed)"))
+Traceback (most recent call last):
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\socket.py", line 962, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\urllib3\connection.py", line 753, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\urllib3\connection.py", line 205, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x0000020BFBCB2390>: Failed to resolve 'thiswebsitedoesnotexist123456789.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='thiswebsitedoesnotexist123456789.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000020BFBCB2390>: Failed to resolve 'thiswebsitedoesnotexist123456789.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\lab7\lab7.py", line 76, in get_currencies
+    response = requests.get(url)
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\requests\adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='thiswebsitedoesnotexist123456789.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000020BFBCB2390>: Failed to resolve 'thiswebsitedoesnotexist123456789.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\lab7\lab7.py", line 42, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\lab7\lab7.py", line 79, in get_currencies
+    raise ConnectionError(f"API is unavailable at {url}: {e}")
+ConnectionError: API is unavailable at https://thiswebsitedoesnotexist123456789.com: HTTPSConnectionPool(host='thiswebsitedoesnotexist123456789.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000020BFBCB2390>: Failed to resolve 'thiswebsitedoesnotexist123456789.com' ([Errno 11001] getaddrinfo failed)"))
+2026-01-04 16:32:36,083 | INFO | currency | starting func get_currencies with args (['USD', 'EUR', 'NGN', 'CNY'],) {}
+2026-01-04 16:32:36,662 | INFO | currency | successfully finished! result {'USD': 78.2267, 'EUR': 92.0938, 'NGN': 54.2295, 'CNY': 11.1592}
+2026-01-04 16:32:36,662 | INFO | currency | starting func get_currencies with args (['USD', 'EUR'],) {}
+2026-01-04 16:32:37,197 | INFO | currency | successfully finished! result {'USD': 78.2267, 'EUR': 92.0938}
+2026-01-04 16:32:37,197 | INFO | currency | starting func get_currencies with args (['USD', 'EUR'],) {}
+2026-01-04 16:32:37,702 | INFO | currency | successfully finished! result {'USD': 78.2267, 'EUR': 92.0938}
+2026-01-04 16:32:37,702 | INFO | currency | starting func get_currencies with args (['USD', 'EUR'],) {}
+2026-01-04 16:32:38,195 | INFO | currency | successfully finished! result {'USD': 78.2267, 'EUR': 92.0938}
+2026-01-04 16:32:38,195 | INFO | currency | starting func get_currencies with args (['RUB', 'FAKECURRENCY'],) {}
+2026-01-04 16:32:38,697 | ERROR | currency | ERROR: KeyError "Currency 'RUB' is missing in API response"
+Traceback (most recent call last):
+  File "c:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\lab7\lab7.py", line 42, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\lab7\lab7.py", line 94, in get_currencies
+    raise KeyError(f"Currency {code!r} is missing in API response")
+KeyError: "Currency 'RUB' is missing in API response"
+2026-01-04 16:32:38,699 | INFO | currency | starting func get_currencies with args (['USD'],) {'url': 'https://thiswebsitedoesnotexist123456789.com'}
+2026-01-04 16:32:38,747 | ERROR | currency | ERROR: ConnectionError API is unavailable at https://thiswebsitedoesnotexist123456789.com: HTTPSConnectionPool(host='thiswebsitedoesnotexist123456789.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024C48AE3090>: Failed to resolve 'thiswebsitedoesnotexist123456789.com' ([Errno 11001] getaddrinfo failed)"))
+Traceback (most recent call last):
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\socket.py", line 962, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\urllib3\connection.py", line 753, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\urllib3\connection.py", line 205, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x0000024C48AE3090>: Failed to resolve 'thiswebsitedoesnotexist123456789.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='thiswebsitedoesnotexist123456789.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024C48AE3090>: Failed to resolve 'thiswebsitedoesnotexist123456789.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\lab7\lab7.py", line 76, in get_currencies
+    response = requests.get(url)
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\.venv\Lib\site-packages\requests\adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='thiswebsitedoesnotexist123456789.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024C48AE3090>: Failed to resolve 'thiswebsitedoesnotexist123456789.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\lab7\lab7.py", line 42, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\mimiv\OneDrive\Dokumente\GitHub\labs-python\lab7\lab7.py", line 79, in get_currencies
+    raise ConnectionError(f"API is unavailable at {url}: {e}")
+ConnectionError: API is unavailable at https://thiswebsitedoesnotexist123456789.com: HTTPSConnectionPool(host='thiswebsitedoesnotexist123456789.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024C48AE3090>: Failed to resolve 'thiswebsitedoesnotexist123456789.com' ([Errno 11001] getaddrinfo failed)"))
+2026-01-04 16:56:33,127 | INFO | currency | starting func get_currencies with args (['USD', 'EUR', 'NGN', 'CNY'],) {}
+2026-01-04 16:56:33,830 | INFO | currency | successfully finished! result {'USD': 78.2267, 'EUR': 92.0938, 'NGN': 54.2295, 'CNY': 11.1592}
+2026-01-04 16:56:57,503 | INFO | currency | starting func get_currencies with args (['USD', 'EUR', 'NGN', 'CNY'],) {}
+2026-01-04 16:56:57,994 | INFO | currency | successfully finished! result {'USD': 78.2267, 'EUR': 92.0938, 'NGN': 54.2295, 'CNY': 11.1592}
+2026-01-04 16:57:25,966 | INFO | currency | starting func get_currencies with args (['USD', 'EUR', 'NGN', 'CNY'],) {}
+2026-01-04 16:57:26,483 | INFO | currency | successfully finished! result {'USD': 78.2267, 'EUR': 92.0938, 'NGN': 54.2295, 'CNY': 11.1592}
