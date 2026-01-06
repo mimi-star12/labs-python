@@ -1,29 +1,21 @@
-class User():
-    """
-    Класс для хранении информации о пользователе
-    """
+class User:
     def __init__(self, id: int, name: str):
-        self.id: int = id
-        self.name: str = name
+        self._id = id
+        self.name = name
 
     @property
-    def id(self):
-        return self.__id
-
-    @id.setter
-    def id(self, id: int):
-        if type(id) is int and id > 0:
-            self.__id = id
-        else:
-            raise ValueError('Ошибка при задании ID пользователя')
+    def id(self) -> int:
+        return self._id
+    
 
     @property
-    def name(self):
-        return self.__name
-
+    def name(self) -> str:
+        return self._name
+    
     @name.setter
-    def name(self, name: str):
-        if type(name) is str and len(name) >= 2:
-            self.__name = name
+    def name(self, value):
+        if isinstance(value, str) and len(value) > 1:
+            self._name = value
         else:
-            raise ValueError('Ошибка при задании имени пользователя')
+            raise TypeError('некорректное имя: должно быть строкой и содержать >1 символа')
+

@@ -1,18 +1,27 @@
 class Currency:
-    """
-    Модель валюты.
-    """
+    '''
+    id — уникальный идентификатор
 
+    num_code — цифровой код
+
+    char_code — символьный код
+
+    name — название валюты
+
+    value — курс
+
+    nominal — номинал (за сколько единиц валюты указан курс)
+    '''
     def __init__(
-        self,
-        currency_id: str,
-        num_code: int,
-        char_code: str,
-        name: str,
-        value: float,
-        nominal: int,
-    ):
-        self.id = currency_id
+            self, 
+            id: str,
+            num_code: int, 
+            char_code: str, 
+            name:str, 
+            value: float|int, 
+            nominal: int
+        ):
+        self.id = id
         self.num_code = num_code
         self.char_code = char_code
         self.name = name
@@ -20,61 +29,66 @@ class Currency:
         self.nominal = nominal
 
     @property
-    def id(self) -> str:
+    def id(self):
         return self._id
 
     @id.setter
-    def id(self, value: str) -> None:
-        if not isinstance(value, str) or not value.strip():
-            raise ValueError("Currency.id must be a non-empty string")
-        self._id = value
+    def id(self, value: str):
+        if isinstance(value, str) and value.strip():
+            self._id = value
+        else:
+            raise TypeError("ID должен быть не пустой строкой")
 
     @property
-    def num_code(self) -> int:
+    def num_code(self):
         return self._num_code
 
     @num_code.setter
-    def num_code(self, value: int) -> None:
-        if not isinstance(value, int):
-            raise ValueError("Currency.num_code must be int")
-        self._num_code = value
+    def num_code(self, value: int):
+        if isinstance(value, int) and value > 0:
+            self._num_code = value
+        else:
+            raise TypeError("Num_code должен быть числом больше 0")
 
     @property
-    def char_code(self) -> str:
+    def char_code(self):
         return self._char_code
 
     @char_code.setter
-    def char_code(self, value: str) -> None:
-        if not isinstance(value, str) or not value.strip():
-            raise ValueError("Currency.char_code must be a non-empty string")
-        self._char_code = value
+    def char_code(self, value: str):
+        if isinstance(value, str) and value.strip():
+            self._char_code = value
+        else:
+            raise TypeError("Char_code должен быть не пустой строкой")
 
     @property
-    def name(self) -> str:
+    def name(self):
         return self._name
-
+        
     @name.setter
-    def name(self, value: str) -> None:
-        if not isinstance(value, str) or not value.strip():
-            raise ValueError("Currency.name must be a non-empty string")
-        self._name = value
+    def name(self, value: str):
+        if isinstance(value, str) and value.strip():
+            self._name = value
+        else:
+            raise TypeError("Name должен быть не пустой строкой")
 
     @property
-    def value(self) -> float:
+    def value(self):
         return self._value
 
     @value.setter
-    def value(self, value: float) -> None:
-        if not isinstance(value, (int, float)):
-            raise TypeError("Currency.value must be a number")
-        self._value = float(value)
-
+    def value(self, value: float|int):
+        if isinstance(value, (float, int)) and value > 0:
+            self._value = value
+        else:
+            raise TypeError("Value должен быть числом больше 0")
     @property
-    def nominal(self) -> int:
+    def nominal(self):
         return self._nominal
 
     @nominal.setter
-    def nominal(self, value: int) -> None:
-        if not isinstance(value, int) or value <= 0:
-            raise ValueError("Currency.nominal must be a positive integer")
-        self._nominal = value
+    def nominal(self, value: int):
+        if isinstance(value, int) and value > 0:
+            self._nominal = value
+        else:
+            raise TypeError("Nominal должен быть числом больше 0 ")
