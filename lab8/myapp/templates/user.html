@@ -2,13 +2,16 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Список валют</title>
+    <title>Пользователь: {{ user.name }}</title>
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-    <h1>Список валют</h1>
+    <h1>Пользователь: {{ user.name }}</h1>
+    <p>ID: {{ user.id }}</p>
+    
+    <h2>Подписки на валюты:</h2>
     <ul>
-        {% for currency in currencies %}
+        {% for currency in subscriptions %}
             <li>{{ currency.name }}: {{ currency.value }} руб.</li>
         {% endfor %}
     </ul>
@@ -22,4 +25,4 @@
         </ul>
     </nav>
 </body>
-</html> 
+</html>
