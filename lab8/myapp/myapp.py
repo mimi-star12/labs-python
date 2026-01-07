@@ -5,7 +5,10 @@ from urllib.parse import urlparse, parse_qs
 
 from jinja2 import Environment, PackageLoader, select_autoescape
 
-from models import Author, User, Currency, UserCurrency, App
+from models.app import App, Author 
+from models.user import User
+from models.user_currency import UserCurrency
+from models.currency import Currency
 from utils.currencies_api import get_currencies
 
 
