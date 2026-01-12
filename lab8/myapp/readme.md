@@ -50,29 +50,6 @@ currency_id — внешний ключ к Currency
 
 Эта модель реализует связь "много ко многим" между пользователями и валютами.
 
-Структура проекта
-
-Проект состоит из следующих компонентов:
-
-myapp/
-├── models/
-│   ├── __init__.py
-│   ├── author.py
-│   ├── app.py
-│   ├── user.py
-│   ├── currency.py
-│   └── user_currency.py
-├── templates/
-│   ├── index.html
-│   ├── users.html
-│   ├── currencies.html
-│   └── user.html
-├── static/
-│   └── css/
-│       └── style.css
-├── myapp.py
-└── utils/
-    └── currencies_api.py  # Функция get_currencies
 
 Описание реализации
 Модели
@@ -166,7 +143,6 @@ def build_currency_models(codes):
     return currencies
 
 Рендеринг данных
-
 Каждый маршрут обрабатывается соответствующей функцией, которая передает данные в шаблон и рендерит его с использованием Jinja2.
 
 def render_template(self, template_name, context=None):
@@ -187,47 +163,36 @@ def render_template(self, template_name, context=None):
 Тестирование
 
 Тестирование моделей:
-
 Проверка геттеров и сеттеров для всех моделей.
-
 Проверка выброса исключений при некорректных значениях.
 
 Тестирование функции get_currencies:
-
 Проверка корректного получения данных с API.
-
 Проверка обработки ошибок, таких как отсутствие валюты или проблемы с сетью.
 
 Тестирование контроллера:
-
 Проверка корректного ответа на запросы /users, /user?id=..., /currencies.
 
 Тестирование шаблонов:
-
 Убедиться, что переменные корректно передаются в шаблон и рендерятся.
 
 Пример работы приложения
-
+<img width="2880" height="1704" alt="image" src="https://github.com/user-attachments/assets/7a442959-e87d-4cd5-a701-c3a2b0fd57fc" />
 Главная страница (/): Информация о приложении и авторе.
 
+<img width="2880" height="1704" alt="image" src="https://github.com/user-attachments/assets/56476d2f-79b0-4c9e-a657-b1a19f0aea15" />
 Список пользователей (/users): Отображение всех пользователей.
 
+<img width="2880" height="1704" alt="image" src="https://github.com/user-attachments/assets/0fb5a24d-2f37-4c8c-8781-5c17ac9898fb" />
 Информация о пользователе (/user?id=...): Данные о пользователе и его подписках.
 
+<img width="2880" height="1704" alt="image" src="https://github.com/user-attachments/assets/e6a82e89-c640-4bef-aab8-6f3b74c4e5b0" />
 Список валют (/currencies): Отображение списка валют с актуальными курсами.
 
-Выводы
+Вывод
 
-Проблемы, возникшие при реализации:
-
-Трудности при организации взаимодействия между различными моделями и запросами к API.
-
-Трудности при обработке данных из API.
 
 Применение принципов MVC:
-
 Модели: Определены классы для User, Currency, UserCurrency, App и Author.
-
 Представление: Использован шаблонизатор Jinja2 для рендеринга HTML.
-
 Контроллер: HTTP сервер на основе BaseHTTPRequestHandler.
