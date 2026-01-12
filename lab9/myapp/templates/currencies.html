@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Список валют</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>NumCode</th>
+            <th>CharCode</th>
+            <th>Name</th>
+            <th>Value</th>
+            <th>Nominal</th>
+            <th>Действия</th>
+        </tr>
+
+        {% for currency in currencies %}
+        <tr>
+            <td>{{ currency.id }}</td>
+            <td>{{ currency.num_code or "—" }}</td>
+            <td>{{ currency.char_code or "—" }}</td>
+            <td>{{ currency.name or "—" }}</td>
+            <td>{{ currency.value if currency.value is not none else "—" }}</td>
+            <td>{{ currency.nominal or "—" }}</td>
+            <td>
+            <a href="/currency/update?{{ currency.char_code }}=">Обновить</a>
+            |
+            <a href="/currency/delete?id={{ currency.id }}">Удалить</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+
+    <h2>Навигация:</h2>
+    <nav>
+        <ul>
+            {% for item in navigation %}
+                <li><a href="{{ item.href }}">{{ item.caption }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
+</body>
+</html> 

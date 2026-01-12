@@ -1,0 +1,140 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fef9f2;
+    color: #6c7c81;
+    line-height: 1.6;
+}
+
+h1, h2 {
+    color: #2d5d7e;
+}
+
+nav {
+    background-color: #f1c6b2;
+    padding: 10px 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: #2d5d7e;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.1em;
+}
+
+nav ul li a:hover {
+    color: #f2a9a1;
+}
+
+.page-container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #f1c6b2;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #f2a9a1;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+table, th, td {
+    border: 1px solid #f1c6b2;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    font-size: 1.1em;
+    border-radius: 8px;
+}
+
+th {
+    background-color: #f1c6b2;
+    color: white;
+}
+
+td {
+    background-color: #f9f9f9;
+}
+
+td:hover {
+    background-color: #f2a9a1;
+    color: white;
+}
+
+.currency-list {
+    list-style: none;
+    padding: 0;
+}
+
+.currency-list li {
+    background-color: #f2f2f2;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.currency-list li:hover {
+    background-color: #f2a9a1;
+    transform: scale(1.05);
+}
+
+.currency-list li span {
+    color: #2d5d7e;
+    font-weight: bold;
+}
+
+.error {
+    color: #e74c3c;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.user-profile {
+    background-color: #fff;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.user-profile h2 {
+    margin-bottom: 15px;
+}
+
+.user-profile p {
+    font-size: 1.2em;
+}

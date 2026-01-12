@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Пользователь: {{ user.name }}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <h1>Пользователь: {{ user.name }}</h1>
+    <p>ID: {{ user.id }}</p>
+    
+    <h2>Подписки на валюты:</h2>
+    <ul>
+        {% for currency in subscriptions %}
+            <li>{{ currency.char_code }}: {{ currency.value }} руб.</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Навигация:</h2>
+    <nav>
+        <ul>
+            {% for item in navigation %}
+                <li><a href="{{ item.href }}">{{ item.caption }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
+</body>
+</html>
