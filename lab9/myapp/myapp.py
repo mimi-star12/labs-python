@@ -230,7 +230,16 @@ class MyRequestHandler(BaseHTTPRequestHandler):
 
     def handle_users(self):
         users = db.user_read_all()  # нужен метод в db
-        self.render_template("users.html", {"users": users})
+        context = {
+            "users": users,
+            "navigation": [
+                {"caption": "Главная", "href": "/"},
+                {"caption": "Пользователи", "href": "/users"},
+                {"caption": "Валюты", "href": "/currencies"},
+                {"caption": "Автор", "href": "/author"},
+            ],
+        }
+        self.render_template("users.html", context)
 
     def handle_currencies(self):
         currencies = currency_controller.list_currencies()  # из БД
