@@ -122,13 +122,24 @@ DELETE FROM currency WHERE id = ?
 Маршрут	Назначение
 /	Главная страница
 /author	Информация об авторе
+
 /users	Список пользователей
+<img width="2880" height="1704" alt="image" src="https://github.com/user-attachments/assets/50d34ecc-0bed-461b-9bda-9dfb1bfc90e2" />
+
 /user?id=...	Просмотр пользователя
+<img width="2880" height="1704" alt="image" src="https://github.com/user-attachments/assets/19be1076-7ecc-4dda-a118-780845d530db" />
+
 /currencies	Список валют
+<img width="2880" height="1704" alt="image" src="https://github.com/user-attachments/assets/34936f5b-9ce4-4be0-aab1-c7623db90824" />
+
 /currency/delete?id=...	Удаление валюты
+
 /currency/update?USD=	Обновление курса
+<img width="2880" height="1704" alt="image" src="https://github.com/user-attachments/assets/93bf22e8-ffb4-4719-8288-e3f6a8aec60c" />
+
 /currency/show	Вывод валют в консоль
-7. Подписки пользователей на валюты
+
+8. Подписки пользователей на валюты
 
 Связь пользователей и валют реализована через таблицу user_currency.
 
@@ -174,3 +185,4 @@ def test_list_currencies(self):
 Освоено модульное тестирование с использованием mock-объектов.
 
 Приложение масштабируемо и легко расширяется.
+
